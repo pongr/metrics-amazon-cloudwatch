@@ -25,6 +25,7 @@ class AmazonCloudWatchReporter(
   val sendCounter          : Boolean = true,
   val sendGauge            : Boolean = true,
   val sendHistogram        : Boolean = true,
+  val sendMeter            : Boolean = true,
   val sendOneMinuteRate    : Boolean = false,
   val sendFiveMinuteRate   : Boolean = false,
   val sendFifteenMinuteRate: Boolean = false,
@@ -50,7 +51,7 @@ class AmazonCloudWatchReporter(
     for (kv <- counters.entrySet   if (sendCounter))   reportCounter  (kv.getKey, kv.getValue, timestamp)
     for (kv <- histograms.entrySet if (sendHistogram)) reportHistogram(kv.getKey, kv.getValue, timestamp)
     for (kv <- timers.entrySet     if (sendTimer))     reportTimer    (kv.getKey, kv.getValue, timestamp)
-    for (kv <- meters.entrySet)                        reportMeter    (kv.getKey, kv.getValue, timestamp)
+    for (kv <- meters.entrySet     if (sendMeter))     reportMeter    (kv.getKey, kv.getValue, timestamp)
   }
 
   def reportSnapshot(name: String, snapshot: Snapshot, timestamp: Long, timeUnit: Option[TimeUnit] = None) {

@@ -186,6 +186,13 @@ class AmazonCloudWatchReporterSpec extends Specification with Mockito {
       there was one(cwr).reportRates("meter", meter, timestamp)
     }
 
+    "don't report meter if disabled" in new TestData {
+      val meter = mock[Meter]
+      val cwr = spy(new AmazonCloudWatchReporter(cloudWatch, registry, rateUnit, durationUnit, sendMeter = false))
+      cwr.report(map[Gauge[_]], map[Counter], map[Histogram], map("meter", meter), map[Timer])
+      there was no(cwr).reportMeter("meter", meter, timestamp) 
+    }
+
   }
 
 }
