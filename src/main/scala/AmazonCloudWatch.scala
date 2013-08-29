@@ -43,7 +43,6 @@ case class AmazonCloudWatch(
                                           .withStatisticValues(stats)
                                           .withTimestamp(new Date(timestamp))
                                           .withUnit(toStandardUnit(timeUnit))
-      println("%s ------------------------ max(%s), min(%s)" format (name, stats.getMaximum, stats.getMinimum))
       send(metricData)
     }
     else
@@ -57,7 +56,6 @@ case class AmazonCloudWatch(
                                           .withValue(value)
                                           .withTimestamp(new Date(timestamp))
                                           .withUnit(toStandardUnit(timeUnit))
-      println("%s ------------------------ %s" format (name, value))
       send(metricData)
     }
     else
