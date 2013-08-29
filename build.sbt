@@ -2,8 +2,6 @@ name := "metrics-amazon-cloudwatch"
 
 organization := "com.pongr"
 
-version := "0.1-SNAPSHOT"
-
 scalaVersion := "2.9.1"
 
 resolvers ++= Seq(
@@ -19,6 +17,10 @@ libraryDependencies ++= Seq(
   "com.amazonaws" % "aws-java-sdk" % "1.5.4"
 )
 
+seq(sbtrelease.Release.releaseSettings: _*)
+
+//http://www.scala-sbt.org/using_sonatype.html
+//https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide
 publishTo <<= version { v: String =>
   val nexus = "https://oss.sonatype.org/"
   if (v.trim.endsWith("SNAPSHOT")) Some("snapshots" at nexus + "content/repositories/snapshots/")
@@ -40,3 +42,22 @@ organizationName := "Pongr"
 organizationHomepage := Some(url("http://pongr.com"))
 
 description := "Amazon Cloud watch reporter for metrics"
+
+pomExtra := (
+  <scm>
+    <url>git@github.com:pongr/metrics-amazon-cloudwatch.git</url>
+    <connection>scm:git:git@github.com:pongr/metrics-amazon-cloudwatch.git</connection>
+  </scm>
+  <developers>
+    <developer>
+      <id>pcetsogtoo</id>
+      <name>Byamba Tumurkhuu</name>
+      <url>https://github.com/pcetsogtoo</url>
+    </developer>
+    <developer>
+      <id>zcox</id>
+      <name>Zach Cox</name>
+      <url>https://github.com/zcox</url>
+    </developer>
+  </developers>
+)
