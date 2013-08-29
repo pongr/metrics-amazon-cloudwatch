@@ -1,2 +1,30 @@
-metrics-amazon-cloudwatch
+Metrics for CloudWatch
 =========================
+
+Sends [Metrics](https://github.com/codahale/metrics/) reporting to [Amazon's CloudWatch](http://aws.amazon.com/cloudwatch/).
+
+## Install
+
+## Usage
+
+```scala
+import com.codahale.metrics.MetricRegistry
+import java.util.concurrent.TimeUnit
+import com.pongr.metrics.amazoncloudwatch._
+
+val metricRegistry = new MetricRegistry()
+
+val cloudWatch = new AmazonCloudWatch(
+  accessKeyId = "access-key-id",
+  secretKey   = "secret-key",
+  nameSpace   = "your namespace",
+  dimensions  = Map("host" -> "localhost")
+)
+val reporter = new AmazonCloudWatchReporter(cloudWatch, metricRegistry, TimeUnit.SECONDS, TimeUnit.MILLISECONDS)
+reporter.start(20, TimeUnit.SECONDS)
+
+```
+
+## License
+
+Fourarms is licensed under the [Apache 2 License](http://www.apache.org/licenses/LICENSE-2.0.txt).
