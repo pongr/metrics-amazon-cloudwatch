@@ -5,6 +5,7 @@ Sends [Metrics](https://github.com/codahale/metrics/) reporting to [Amazon's Clo
 
 ### sbt
 
+Snapshots are in [Sonatype repository](https://oss.sonatype.org/content/repositories/snapshot/).
 ```
 "com.pongr" %% "metrics-amazon-cloudwatch" % "0.1-SNAPSHOT"
 ```
