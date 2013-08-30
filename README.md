@@ -5,10 +5,10 @@ Sends [Metrics](https://github.com/codahale/metrics/) reporting to [Amazon's Clo
 
 ### sbt
 
-Spracebook releases are in the central Maven repository. Snapshots are in [https://oss.sonatype.org/content/repositories/snapshots/][4].
+metrics-amazon-cloudwatch releases are in the central Maven repository. Snapshots are in [https://oss.sonatype.org/content/repositories/snapshots/][4].
 
 ```
-"com.pongr" %% "spracebook" % "0.1.0-SNAPSHOT"
+"com.pongr" %% "metrics-amazon-cloudwatch" % "0.1-SNAPSHOT"
 ```
 
 
