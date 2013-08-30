@@ -3,9 +3,16 @@ Metrics for CloudWatch
 
 Sends [Metrics](https://github.com/codahale/metrics/) reporting to [Amazon's CloudWatch](http://aws.amazon.com/cloudwatch/).
 
-## Install
+### sbt
 
-## Usage
+Spracebook releases are in the central Maven repository. Snapshots are in [https://oss.sonatype.org/content/repositories/snapshots/][4].
+
+```
+"com.pongr" %% "spracebook" % "0.1.0-SNAPSHOT"
+```
+
+
+### Usage
 
 ```scala
 import com.codahale.metrics.MetricRegistry
@@ -25,6 +32,6 @@ reporter.start(20, TimeUnit.SECONDS)
 
 ```
 
-## License
+### License
 
-Fourarms is licensed under the [Apache 2 License](http://www.apache.org/licenses/LICENSE-2.0.txt).
+metrics-amazon-cloudwatch is licensed under the [Apache 2 License](http://www.apache.org/licenses/LICENSE-2.0.txt).
